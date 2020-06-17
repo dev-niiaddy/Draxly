@@ -1,5 +1,5 @@
 //
-//  AddItemViewController.swift
+//  ItemDetailViewController.swift
 //  Draxly
 //
 //  Created by Godwin Addy on 6/13/20.
@@ -8,15 +8,44 @@
 
 import UIKit
 
-class AddItemViewController: UITableViewController, UITextFieldDelegate {
+
+
+protocol ItemDetailViewControllerDelegate: class {
+    
+    func itemDetailViewControllerDidCancel(_ controller: ItemDetailView)
+    
+    func itemDetailViewController(
+        _ controller: ItemDetailView,
+        didFinishAdding item: ChecklistItem
+    )
+    
+    func itemDetailViewController(
+        _ controller: ItemDetailView,
+        didFinishEditing item: ChecklistItem
+    )
+}
+
+
+
+class ItemDetailView: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!
     
     @IBOutlet weak var doneBarButton: UIBarButtonItem!
     
+    var itemToEdit: ChecklistItem?
+    
+    //MARK: Delegates
+    weak var delegate: ItemDetailViewControllerDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let item = itemToEdit {
+            title =  "Edit Item"
+            textField.text = item.text
+            doneBarButton.isEnabled = true
+        }
         
     }
     
@@ -53,12 +82,18 @@ class AddItemViewController: UITableViewController, UITextFieldDelegate {
     
     // MARK: - Add Actions
     @IBAction func cancel() {
-        navigationController?.popViewController(animated: true)
+        delegate?.itemDetailViewControllerDidCancel(self)
     }
     
     @IBAction func done() {
-        print("Contents of text field \(textField.text!)")
-        navigationController?.popViewController(animated: true)
+//        print("Contents of text field \(textField.text!)")
+        if let item =  itemToEdit {
+            item.text = textField.text!
+            delegate?.itemDetailViewController(self, didFinishEditing: item)
+        }else {
+            let item = ChecklistItem(text: textField.text!)
+            delegate?.itemDetailViewController(self, didFinishAdding: item)
+        }
     }
 
 }
