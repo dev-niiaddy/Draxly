@@ -26,6 +26,8 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         checklistItems.append(ChecklistItem(text: "Soccer Practice"))
         checklistItems.append(ChecklistItem(text: "Eat ice cream"))
         
+        
+        
         // loop to quickly generate items for testing
 //        for i in 0..<100 {
 //            checklistItems.append(
@@ -33,12 +35,9 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
 //            )
 //        }
         
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        
+        print("Documents folder is \(documentsDirectory())")
+        print("Documents folder is \(dataFilePath())")
     }
 
     // MARK: - Table view data source
@@ -75,12 +74,15 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         
         tableView.deselectRow(at: indexPath, animated: true)
         
+        saveChecklistItems()
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         checklistItems.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
+        
+        saveChecklistItems()
     }
     
     // MARK: - Prepare UI with Data
@@ -109,6 +111,46 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
     
+    func documentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        
+        return paths[0]
+    }
+    
+    func dataFilePath() -> URL {
+        return documentsDirectory().appendingPathComponent("Checklist.plist")
+    }
+    
+    func saveChecklistItems() {
+        let encoder = PropertyListEncoder()
+        
+        do {
+            
+            let data = try encoder.encode(checklistItems)
+            
+            try data.write(to: dataFilePath(), options: Data.WritingOptions.atomic)
+            
+        } catch {
+            print("Error encoding item array: \(error.localizedDescription)")
+        }
+    }
+    
+    func loadChecklistItems() {
+        let file = dataFilePath()
+        
+        if let data = try? Data(contentsOf: file) {
+            
+            let decoder = PropertyListDecoder()
+            
+            do {
+                checklistItems = try decoder.decode([ChecklistItem].self,
+                                                    from: data)
+            } catch {
+                print("Error decoding array: \(error.localizedDescription)")
+            }
+        }
+    }
+    
     // MARK: - ItemDetailViewController Delegates
     func itemDetailViewControllerDidCancel(_ controller: ItemDetailView) {
         navigationController?.popViewController(animated: true)
@@ -117,6 +159,8 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
     func itemDetailViewController(_ controller: ItemDetailView, didFinishAdding item: ChecklistItem) {
         addItem(item)
         navigationController?.popViewController(animated: true)
+        
+        saveChecklistItems()
     }
     
     func itemDetailViewController(_ controller: ItemDetailView, didFinishEditing item: ChecklistItem) {
@@ -131,6 +175,8 @@ class ChecklistViewController: UITableViewController, ItemDetailViewControllerDe
         }
         
         navigationController?.popViewController(animated: true)
+        
+        saveChecklistItems()
     }
     
     // MARK: - Navigation

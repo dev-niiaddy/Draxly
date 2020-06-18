@@ -86,9 +86,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of item" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3Ra-Xk-rJi" userLabel="Text Field">
-                                                    <rect key="frame" x="16" y="4" width="318" height="34"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of item" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3Ra-Xk-rJi" userLabel="Text Field">
+                                                    <rect key="frame" x="10" y="5" width="355" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
@@ -97,6 +96,12 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="3Ra-Xk-rJi" secondAttribute="trailing" constant="10" id="Iof-e6-HyX"/>
+                                                <constraint firstItem="3Ra-Xk-rJi" firstAttribute="leading" secondItem="Byf-pQ-zqo" secondAttribute="leading" constant="10" id="Mfq-pO-twz"/>
+                                                <constraint firstAttribute="bottom" secondItem="3Ra-Xk-rJi" secondAttribute="bottom" constant="5" id="PHH-b3-uyn"/>
+                                                <constraint firstItem="3Ra-Xk-rJi" firstAttribute="top" secondItem="Byf-pQ-zqo" secondAttribute="top" constant="5" id="kiR-4k-gdu"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
