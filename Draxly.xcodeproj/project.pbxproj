@@ -14,7 +14,11 @@
 		42136E53248C616000175871 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42136E51248C616000175871 /* LaunchScreen.storyboard */; };
 		42136E5B248CDAD300175871 /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42136E5A248CDAD300175871 /* ChecklistViewController.swift */; };
 		4236407624957AFF00FE2EDB /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236407524957AFF00FE2EDB /* ChecklistItem.swift */; };
-		4236407824959E3700FE2EDB /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236407724959E3700FE2EDB /* ItemDetailView.swift */; };
+		4236407824959E3700FE2EDB /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4236407724959E3700FE2EDB /* ItemDetailViewController.swift */; };
+		42483D6A24A0140B0014018E /* AllListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42483D6924A0140B0014018E /* AllListsViewController.swift */; };
+		42483D6C24A01E560014018E /* Checklist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42483D6B24A01E560014018E /* Checklist.swift */; };
+		42AECE9324A806B600074C3D /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AECE9224A806B600074C3D /* DataModel.swift */; };
+		42DB963F24A25C4E0088B91C /* ListDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DB963E24A25C4E0088B91C /* ListDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +31,11 @@
 		42136E54248C616000175871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42136E5A248CDAD300175871 /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
 		4236407524957AFF00FE2EDB /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
-		4236407724959E3700FE2EDB /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
+		4236407724959E3700FE2EDB /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
+		42483D6924A0140B0014018E /* AllListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllListsViewController.swift; sourceTree = "<group>"; };
+		42483D6B24A01E560014018E /* Checklist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checklist.swift; sourceTree = "<group>"; };
+		42AECE9224A806B600074C3D /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		42DB963E24A25C4E0088B91C /* ListDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,17 +68,45 @@
 		42136E45248C615D00175871 /* Draxly */ = {
 			isa = PBXGroup;
 			children = (
+				423CED4E24A8A4D300A3B124 /* Resources */,
+				423CED4D24A8A45F00A3B124 /* View Controllers */,
+				423CED4C24A8A42000A3B124 /* Data Models */,
 				42136E46248C615D00175871 /* AppDelegate.swift */,
-				42136E48248C615D00175871 /* SceneDelegate.swift */,
-				42136E4C248C615D00175871 /* Main.storyboard */,
-				42136E4F248C616000175871 /* Assets.xcassets */,
-				42136E51248C616000175871 /* LaunchScreen.storyboard */,
 				42136E54248C616000175871 /* Info.plist */,
-				42136E5A248CDAD300175871 /* ChecklistViewController.swift */,
-				4236407524957AFF00FE2EDB /* ChecklistItem.swift */,
-				4236407724959E3700FE2EDB /* ItemDetailView.swift */,
+				42136E48248C615D00175871 /* SceneDelegate.swift */,
 			);
 			path = Draxly;
+			sourceTree = "<group>";
+		};
+		423CED4C24A8A42000A3B124 /* Data Models */ = {
+			isa = PBXGroup;
+			children = (
+				42483D6B24A01E560014018E /* Checklist.swift */,
+				4236407524957AFF00FE2EDB /* ChecklistItem.swift */,
+				42AECE9224A806B600074C3D /* DataModel.swift */,
+			);
+			path = "Data Models";
+			sourceTree = "<group>";
+		};
+		423CED4D24A8A45F00A3B124 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				42483D6924A0140B0014018E /* AllListsViewController.swift */,
+				42136E5A248CDAD300175871 /* ChecklistViewController.swift */,
+				42DB963E24A25C4E0088B91C /* ListDetailViewController.swift */,
+				4236407724959E3700FE2EDB /* ItemDetailViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		423CED4E24A8A4D300A3B124 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				42136E4F248C616000175871 /* Assets.xcassets */,
+				42136E51248C616000175871 /* LaunchScreen.storyboard */,
+				42136E4C248C615D00175871 /* Main.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,11 +180,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4236407824959E3700FE2EDB /* ItemDetailView.swift in Sources */,
+				4236407824959E3700FE2EDB /* ItemDetailViewController.swift in Sources */,
+				42DB963F24A25C4E0088B91C /* ListDetailViewController.swift in Sources */,
 				42136E47248C615D00175871 /* AppDelegate.swift in Sources */,
+				42483D6A24A0140B0014018E /* AllListsViewController.swift in Sources */,
 				42136E5B248CDAD300175871 /* ChecklistViewController.swift in Sources */,
 				42136E49248C615D00175871 /* SceneDelegate.swift in Sources */,
 				4236407624957AFF00FE2EDB /* ChecklistItem.swift in Sources */,
+				42483D6C24A01E560014018E /* Checklist.swift in Sources */,
+				42AECE9324A806B600074C3D /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

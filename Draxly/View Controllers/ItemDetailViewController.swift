@@ -12,22 +12,22 @@ import UIKit
 
 protocol ItemDetailViewControllerDelegate: class {
     
-    func itemDetailViewControllerDidCancel(_ controller: ItemDetailView)
+    func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController)
     
     func itemDetailViewController(
-        _ controller: ItemDetailView,
+        _ controller: ItemDetailViewController,
         didFinishAdding item: ChecklistItem
     )
     
     func itemDetailViewController(
-        _ controller: ItemDetailView,
+        _ controller: ItemDetailViewController,
         didFinishEditing item: ChecklistItem
     )
 }
 
 
 
-class ItemDetailView: UITableViewController, UITextFieldDelegate {
+class ItemDetailViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var textField: UITextField!
     
